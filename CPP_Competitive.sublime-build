@@ -1,12 +1,13 @@
 {
-    "cmd": ["g++", "-std=c++17", "-O2", "-Wall", "${file}", "-o", "${file_path}/${file_base_name}.exe", "&&", "${file_path}/${file_base_name}.exe<input.txt>output.txt"],
-    "shell": true,
+    "shell_cmd": "g++ -std=c++17 -O2 -Wall \"${file}\" -o \"${file_path}/${file_base_name}.exe\" && \"${file_path}/${file_base_name}.exe\" < input.txt > output.txt",
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     "working_dir": "$file_path",
     "selector": "source.c++, source.cpp",
+    "env": {"PATH": "C:\\MinGW\\bin;%PATH%"},
     "variants": [
         {
-            "name": "Compile Only",
-            "cmd": ["g++", "-std=c++17", "-O2", "-Wall", "${file}", "-o", "${file_path}/${file_base_name}.exe"]
+            "name": "Compile",
+            "shell_cmd": "g++ -std=c++17 -O2 -Wall \"${file}\" -o \"${file_path}/${file_base_name}.exe\""
         }
     ]
 }
